@@ -10,20 +10,20 @@ public class Main {
         Arrays.sort(arrays);
         printArray("Sorted array", arrays);
 
-        int index = Arrays.binarySearch(arrays, 2);
-        System.out.println("Didn't find 1@ " + index);
+        int index = Arrays.binarySearch(arrays, 1);
+        System.out.println("Didn't find 1 @ " + index);
 
         int newIndex = -index - 1;
-        arrays = insertElement(arrays, 1, newIndex);
+        arrays = insertElements(arrays, 1, newIndex);
         printArray("With 1 added", arrays);
     }
 
-    private static int[] insertElement(int[] arrays, int i, int newIndex) {
-        int lenght = arrays.length;
-        int destination[] = new int[lenght + 1];
-        System.arraycopy(arrays, 0, destination, 0, newIndex);
-        destination[newIndex] = i;
-        System.arraycopy(arrays, newIndex, destination, newIndex + 1, lenght - newIndex);
+    private static int[] insertElements(int original[], int element, int index) {
+        int length = original.length;
+        int destination[] = new int[length + 1];
+        System.arraycopy(original, 0, destination, 0, index);
+        destination[index] = element;
+        System.arraycopy(original, index, destination, index + 1, length - index);
         return destination;
     }
 
